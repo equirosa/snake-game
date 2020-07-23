@@ -4,7 +4,7 @@ a bunch of programming patterns that have been added to improve some performance
 
 This is carried out as an Exam by Universidad Cenfotec.
 
-## Original README is as follows...
+## Original README is as follows... (Including license statement)
 Java Snake game source code
 
 http://zetcode.com/tutorials/javagamestutorial/snake/
