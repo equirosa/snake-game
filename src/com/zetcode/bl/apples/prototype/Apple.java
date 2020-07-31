@@ -7,8 +7,8 @@ import javax.swing.*;
  * @version 1.0.0
  */
 public abstract class Apple {
-	ImageIcon icon;
-	int points;
+	private ImageIcon icon;
+	private int points;
 
 	public abstract Apple clone();
 
@@ -17,13 +17,13 @@ public abstract class Apple {
 	 * @return ImageIcon value of the Apple.
 	 */
 	public ImageIcon getIcon() {
-		return icon;
+		return this.icon;
 	}
 
 	/**
 	 * @return Int value of the points the Apple is worth.
 	 */
 	public int getPoints() {
-		return points;
+		return this.points;
 	}
 }
