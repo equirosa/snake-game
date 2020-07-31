@@ -1,5 +1,7 @@
 package com.zetcode;
 
+import com.zetcode.tl.AppleManager;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -41,6 +43,8 @@ public class Board extends JPanel implements ActionListener {
     private Image ball;
     private Image apple;
     private Image head;
+    
+    private AppleManager appleManager = new AppleManager();
 
     public Board() {
         
@@ -63,8 +67,8 @@ public class Board extends JPanel implements ActionListener {
         ImageIcon iid = new ImageIcon("src/resources/dots/dot.png");
         ball = iid.getImage();
 
-        ImageIcon iia = new ImageIcon("src/resources/apples/red.png");
-        apple = iia.getImage();
+        
+        apple = appleManager.getRandomApple().getIcon().getImage();
 
         ImageIcon iih = new ImageIcon("src/resources/head.png");
         head = iih.getImage();
