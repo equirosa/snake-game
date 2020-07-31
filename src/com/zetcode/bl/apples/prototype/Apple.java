@@ -26,4 +26,22 @@ public abstract class Apple {
 	public int getPoints() {
 		return this.points;
 	}
+
+	//Setters
+
+	/**
+	 *
+	 * @param icon ImageIcon value to be set as the new icon.
+	 */
+	public void setIcon(ImageIcon icon) {
+		this.icon = icon;
+	}
+
+	/**
+	 *
+	 * @param points Int value to be set as new points count.
+	 */
+	public void setPoints(int points) {
+		this.points = points;
+	}
 }
