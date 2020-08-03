@@ -41,7 +41,7 @@ public class Board extends JPanel implements ActionListener {
 
     private Timer timer;
     private Image ball;
-    private Image apple;
+    private Apple apple;
     private Image head;
     
     private AppleManager appleManager = new AppleManager();
@@ -68,7 +68,7 @@ public class Board extends JPanel implements ActionListener {
         ball = iid.getImage();
 
         
-        apple = appleManager.getRandomApple().getIcon().getImage();
+        apple = appleManager.getRandomApple();
 
         ImageIcon iih = new ImageIcon("src/resources/head.png");
         head = iih.getImage();
@@ -100,7 +100,7 @@ public class Board extends JPanel implements ActionListener {
         
         if (inGame) {
 
-            g.drawImage(apple, apple_x, apple_y, this);
+            g.drawImage(apple.getIcon().getImage(), apple_x, apple_y, this);
 
             for (int z = 0; z < dots; z++) {
                 if (z == 0) {
