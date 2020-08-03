@@ -133,6 +133,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == apple_x) && (y[0] == apple_y)) {
 
+            score += apple.getPoints();
             dots++;
             locateApple();
         }
