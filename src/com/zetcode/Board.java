@@ -28,6 +28,8 @@ public class Board extends JPanel implements ActionListener {
 
     private final int[] x = new int[ALL_DOTS];
     private final int[] y = new int[ALL_DOTS];
+    private final JLabel scoreLabel = new JLabel();
+    private final JLabel livesLabel = new JLabel();
 
     private int dots;
     private int apple_x;
@@ -52,8 +54,10 @@ public class Board extends JPanel implements ActionListener {
         
         initBoard();
     }
-    
+
     private void initBoard() {
+        scoreLabel.setText("Puntaje: "+score);
+        add(scoreLabel);
 
         addKeyListener(new TAdapter());
         setBackground(Color.black);
@@ -77,6 +81,8 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void initGame() {
+        livesLabel.setText("Vidas: " + lives);
+        add(livesLabel);
 
         dots = 3;
 
@@ -137,6 +143,7 @@ public class Board extends JPanel implements ActionListener {
 
             score += apple.getPoints();
             dots++;
+            scoreLabel.setText("Puntaje: " + score);
             locateApple();
         }
     }
