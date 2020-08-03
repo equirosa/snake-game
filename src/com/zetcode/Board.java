@@ -1,5 +1,6 @@
 package com.zetcode;
 
+import com.zetcode.bl.apples.prototype.Apple;
 import com.zetcode.tl.AppleManager;
 
 import java.awt.Color;
@@ -16,6 +17,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.*;
 
 public class Board extends JPanel implements ActionListener {
+
 
     private final int B_WIDTH = 300;
     private final int B_HEIGHT = 300;
