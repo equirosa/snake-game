@@ -1,7 +1,10 @@
 package com.zetcode;
 
+import com.zetcode.bl.apples.concrete.RedApple;
 import com.zetcode.bl.apples.prototype.Apple;
+import com.zetcode.bl.dots.component.Dot;
 import com.zetcode.tl.AppleManager;
+import com.zetcode.tl.DotManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.*;
+import javax.swing.text.html.ImageView;
 
 public class Board extends JPanel implements ActionListener {
 
@@ -34,7 +38,7 @@ public class Board extends JPanel implements ActionListener {
     private int dots;
     private int apple_x;
     private int apple_y;
-    private int lives = 3;
+    private final int lives = 3;
     private int score = 0;
 
     private boolean leftDirection = false;
@@ -44,11 +48,12 @@ public class Board extends JPanel implements ActionListener {
     private boolean inGame = true;
 
     private Timer timer;
-    private Image ball;
+    private Dot ball;
     private Apple apple;
     private Image head;
     
-    private AppleManager appleManager = new AppleManager();
+    private final AppleManager appleManager = new AppleManager();
+    private final DotManager dotManager = new DotManager();
 
     public Board() {
         
@@ -69,14 +74,14 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void loadImages() {
+        if (apple != null) {
+            dotManager.decorateDot(apple.getPoints());
+        }else dotManager.decorateDot(3);
+        ball = dotManager.getDot();
 
-        ImageIcon iid = new ImageIcon("src/resources/dots/dot.png");
-        ball = iid.getImage();
-
-        
         apple = appleManager.getRandomApple();
 
-        ImageIcon iih = new ImageIcon("src/resources/head.png");
+        ImageIcon iih = new ImageIcon("src/resources/dots/head.png");
         head = iih.getImage();
     }
 
@@ -114,7 +119,7 @@ public class Board extends JPanel implements ActionListener {
                 if (z == 0) {
                     g.drawImage(head, x[z], y[z], this);
                 } else {
-                    g.drawImage(ball, x[z], y[z], this);
+                    g.drawImage(new ImageIcon(ball.getColor()).getImage(), x[z], y[z], this);
                 }
             }
 
@@ -141,7 +146,7 @@ public class Board extends JPanel implements ActionListener {
 
         if ((x[0] == apple_x) && (y[0] == apple_y)) {
             score += apple.getPoints();
-            apple = appleManager.getRandomApple();
+            loadImages();
             dots++;
             scoreLabel.setText("Puntaje: " + score);
             locateApple();
